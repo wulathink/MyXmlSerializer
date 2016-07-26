@@ -30,16 +30,33 @@ namespace XmlSerilizer
             item2.lightColor = EnumLightColor.green;
             frame.ItemList.Add(item2);
 
+            ItemTrainSet item3 = new ItemTrainSet();
+            item3.ItemID = 102;
+            item3.PosX = 3.5f;
+            item3.TrainSetID = 1003;
+            SingleCar s1 =new SingleCar();
+            s1.CarID = 0x9501;
+            s1.IsHead = true;
+            SingleCar s2 = new SingleCar();
+            s2.CarID = 0x9502;
+            s2.IsHead = false;
+            SingleCar s3 = new SingleCar();
+            s3.CarID = 0x9503;
+            s3.IsHead = false;
+            item3.Cars.Add(s1);
+            item3.Cars.Add(s2);
+            item3.Cars.Add(s3);
+            frame.ItemList.Add(item3);
             //写入
-            //XmlSerializer writer = new XmlSerializer(typeof(Frame));
-            //FileStream file = System.IO.File.Create(@"D:\333.xml");
-            //writer.Serialize(file, frame);
-            //file.Close();
-            //读取
-            FileStream file = new FileStream(@"D:\333.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer xmlSearializer = new XmlSerializer(typeof(Frame));
-            Frame f = (Frame)xmlSearializer.Deserialize(file);
+            XmlSerializer writer = new XmlSerializer(typeof(Frame));
+            FileStream file = System.IO.File.Create(@"D:\333.xml");
+            writer.Serialize(file, frame);
             file.Close();
+            //读取
+            FileStream fileRead = new FileStream(@"D:\333.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer xmlSearializer = new XmlSerializer(typeof(Frame));
+            Frame f = (Frame)xmlSearializer.Deserialize(fileRead);
+            fileRead.Close();
         }
     }
 }

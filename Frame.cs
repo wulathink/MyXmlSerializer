@@ -8,7 +8,8 @@ using System.Xml.Serialization;
 namespace XmlSerilizer
 {
     [XmlInclude(typeof(ItemDaocha)), 
-    XmlInclude(typeof(ItemLight))]
+    XmlInclude(typeof(ItemLight)),
+    XmlInclude(typeof(ItemTrainSet)),]
     public class Frame
     {
         private List<ItemBase> _itemList = new List<ItemBase>();
